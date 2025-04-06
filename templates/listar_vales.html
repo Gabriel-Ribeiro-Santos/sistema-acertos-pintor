@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Vales</title>
+</head>
+<body>
+    <h1>Lista de Vales:</h1>
+    <table border="1">
+        <tr>
+            <th>Data</th>
+            <th>Valor</th>
+        </tr>
+        {% if carros %}
+            {% for vale in vales %}
+            <tr>
+                <td>{{ vale[1] }}</td>
+                <td>R$ {{ vale[0]  }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center text-danger">
+                    <i class="bi bi-exclamation-triangle-fill"></i> Nenhum carro em aberto.
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+    <br>
+    <a href="/cadastrar-vale"><button type="submit">Cadastrar novo Vale</button></a> |
+    <a href="/"><button type="submit">Voltar</button></a>
+</body>
+</html>

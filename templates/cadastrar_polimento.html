@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Polomento</title>
+</head>
+<body>
+    <h1>Cadastrar Polimento</h1>
+    <form method="post">
+        <label>Carro:</label><br>
+        <select name="carro_id" required>
+            {% for carro in carros %}
+            <option value="{{ carro[0] }}">{{ carro[1] }} - {{ carro[2] }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Quantidade de Pecas:</label><br>
+        <input type="number" name="quantidade" required><br><br>
+
+        <label>Data do Polimento:</label><br>
+        <input type="date" name="data_polimento" required><br><br>
+
+        <input type="submit" value="Salvar">
+    </form>
+    <br>
+    <a href="/polimentos"><button type="submit">Lista de Polimentos</button></a> |
+    <a href="/"><button type="submit">Voltar</button></a>
+</body>
+</html>

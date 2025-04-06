@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Resumo de Acerto</title>
+
+</head>
+<body>
+    <h1>Resumo de Acerto Final</h1>
+    <table class="table table-bordered mt-4">
+        <tr><th>Descrição</th><th>Valor (R$)</th></tr>
+
+        {% set dados_exibidos = false %}
+
+        {% if total_servicos > 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td>Total de Serviços</td><td>{{ total_servicos }}</td></tr>
+        {% endif %}
+
+        {% if total_despesas > 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td>Total de Despesas</td><td>{{ total_despesas }}</td></tr>
+        {% endif %}
+
+        {% if total_polimentos > 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td>Total de Polimentos</td><td>{{ total_polimentos }}</td></tr>
+        {% endif %}
+
+        {% if total_lucro != 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td><strong>Lucro Bruto</strong></td><td><strong>{{ total_lucro }}</strong></td></tr>
+        {% endif %}
+
+        {% if seu_acerto != 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td>Acerto</td><td>{{ seu_acerto }}</td></tr>
+        {% endif %}
+
+        {% if total_vales > 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td>Total de Vales</td><td>{{ total_vales }}</td></tr>
+        {% endif %}
+
+        {% if a_receber != 0 %}
+            {% set dados_exibidos = true %}
+            <tr><td><strong>Valor a Receber</strong></td><td><strong>{{ a_receber }}</strong></td></tr>
+        {% endif %}
+
+        {% if not dados_exibidos %}
+        <tr>
+            <td colspan="2" class="text-center text-danger">
+                <i class="bi bi-exclamation-circle-fill"></i> Nenhum dado em aberto no momento.
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <br>
+    <a href="/"><button type="submit">Voltar</button></a>
+    {% if dados_exibidos %}
+    <form action="{{ url_for('fechar_acerto') }}" method="POST" onsubmit="return confirm('Deseja realmente fechar este acerto?');">
+        <button type="submit" class="btn btn-success">
+            <i class="bi bi-check-circle-fill"></i> Fechar Novo Acerto
+        </button>
+    </form>
+    {% endif %}
+
+
+
+    <script>
+    function confirmarFechamento() {
+        if (confirm("Tem certeza que deseja fechar o acerto?\nDepois disso, os dados serão zerados!")) {
+            window.location.href = "{{ url_for('fechar_acerto') }}";
+        }
+    }
+</script>
+
+    
+</body>
+</html>

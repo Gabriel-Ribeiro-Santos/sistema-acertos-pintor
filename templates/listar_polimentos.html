@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Polimentos</title>
+</head>
+<body>
+    <h1>Lista de Polimentos</h1>
+    <table border="1">
+        <tr>
+            <th>Carro</th>
+            <th>Quantidade</th>
+            <th>Valor Total</th>
+            <th>Data</th>
+        </tr>
+        {% if polimentos %}
+            {% for polimento in polimentos %}
+            <tr>
+                <td>{{ polimento[1] }}</td>
+                <td>{{ polimento[2] }}</td>
+                <td>R$ {{ polimento[3] }}</td>
+                <td>{{ polimento[4] }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center text-danger">
+                    <i class="bi bi-exclamation-triangle-fill"></i> Nenhum carro em aberto.
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+    <br>
+    <a href="/cadastrar-polimento"><button type="submit">Cadastrar novo Polimento</button></a> |
+    <a href="/"><button type="submit">Voltar</button></a>
+</body>
+</html>

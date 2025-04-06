@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Despesa</title>
+</head>
+<body>
+    <h1>Cadastrar Despesa</h1>
+    <form method="post">
+        <label>Descrição do material:</label><br>
+        <input type="text" name="descricao" required><br><br>
+
+        <label>Valor (R$):</label><br>
+        <input type="number" step="0.01" name="valor" required><br><br>
+
+        <label>Data da compra:</label><br>
+        <input type="date" name="data_compra" required><br><br>
+
+        <input type="submit" value="Salvar">
+    </form>
+    <br>
+    <a href="/despesas"><button type="submit">Lista de Despesas</button></a> |
+    <a href="/"><button type="submit">Voltar</button></a>
+</body>
+</html>

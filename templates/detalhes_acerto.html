@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Acerto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Detalhes do Acerto</h2>
+    <a href="{{ url_for('listar_acertos') }}" class="btn btn-secondary mb-3">← Voltar</a>
+
+    <h5>Resumo</h5>
+    <ul>
+        <li><strong>Data:</strong> {{ acerto.data_acerto }}</li>
+        <li><strong>Tota Serviço:</strong> R$ {{ acerto.total_servico }}</li>
+        <li><strong>Material:</strong> R$ {{ acerto.total_material }}</li>
+        <li><strong>Polimento:</strong> R$ {{ acerto.total_polimento }}</li>
+        <li><strong>Lucro Bruto:</strong> R$ {{ acerto.total_servico - acerto.total_material - acerto.total_polimento }}</li>
+        <li><strong>50 %:</strong> R$ {{ (acerto.total_servico - acerto.total_material - acerto.total_polimento) /2 }}</li>
+        <li><strong>Total Vales:</strong> R$ {{ acerto.total_vales }}</li>
+        <li><strong>Valor Recebido:</strong> R$ {{ acerto.valor_recebido }}</li>
+    </ul>
+
+    <h5>Carros</h5>
+    <ul>
+        {% for carro in carros %}
+        <li>{{ carro.nome }} - {{ carro.placa }} - R$ {{ carro.valor_pintura }}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Despesas</h5>
+    <ul>
+        {% for despesa in despesas %}
+        <li>{{ despesa.descricao }} - R$ {{ despesa.valor }}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Polimentos</h5>
+    <ul>
+        {% for p in polimentos %}
+        <li>{{ p.quantidade }} peça(s) - R$ {{ p.quantidade * p.valor_unitario }}</li>
+        {% endfor %}
+    </ul>
+
+    <h5>Vales</h5>
+    <ul>
+        {% for v in vales %}
+        <li>R$ {{ v.valor }} - {{ v.data_retirada }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

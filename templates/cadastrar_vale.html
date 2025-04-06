@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Vale</title>
+</head>
+<body>
+    <h1>Cadastrar Vale</h1>
+    <form method="post">
+        <label>Valor:</label><br>
+        <input type="number" name="valor" step="0.01" required><br><br>
+
+        <label>Data de Retirada:</label><br>
+        <input type="date" name="data_retirada" required><br><br>
+
+        <input type="submit" value="Salvar">
+    </form>
+    <br>
+    <a href="/vales"><button type="submit">Ver Todos os vales</button></a> |
+    <a href="/"><button type="submit">Voltar</button></a>
+</body>
+</html>

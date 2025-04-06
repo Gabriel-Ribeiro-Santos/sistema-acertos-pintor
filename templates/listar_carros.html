@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <time>Carros Cadastrados</time>
+</head>
+<body>
+    <h1>Lista de Carros</h1>
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Placa</th>
+            <th>Cor</th>
+            <th>Peças</th>
+            <th>Valor</th>
+        </tr>
+        {% if carros %}
+            {% for carro in carros %}
+            <tr>
+                <td>{{ carro[1] }}</td>
+                <td>{{ carro[2] }}</td>
+                <td>{{ carro[3] }}</td>
+                <td>{{ carro[4] }}</td>
+                <td>R${{ carro[5] }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center text-danger">
+                    <i class="bi bi-exclamation-triangle-fill"></i> Nenhum carro em aberto.
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+    <br>
+    <a href="/cadastrar-carro"><button type="submit">Cadastrar novo Carro</button></a> |
+    <a href="/"><button type="submit">Voltar</button></a>
+</body>
+</html>
